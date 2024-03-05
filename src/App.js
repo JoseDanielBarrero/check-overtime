@@ -52,7 +52,7 @@ function App() {
       <div className='main-form'>
         <div>
           <p>Initial Hours: </p>
-          <input type='number' value={hours} onChange={(e) => {
+          <input type='number' inputmode="decimal" value={hours} onChange={(e) => {
             if(e.target.value >= 0)
             {
               setHours(e.target.value);

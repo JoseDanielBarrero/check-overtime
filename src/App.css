@@ -39,6 +39,7 @@
   min-height:40px;
   font-size: 24px;
   text-align: center;
+  color:aliceblue;
 }
 
 .main-form p{
@@ -48,6 +49,7 @@
 
 .main-button {
   background-color: green;
+  color:aliceblue;
 }
 
 
