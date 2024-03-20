@@ -5,18 +5,12 @@ import moment from 'moment'
 
 function App() {
   const [hours, setHours] = useState(0);
+  const [initialHours, setInitialHours] = useState('09:30');
   const [finalHours, setFinalHours] = useState(['', '']);
   
 
-  const getFinishHour = (shift) => {
-    if(shift === "morning2"){
-      return "2:30";
-    }
-    else if(shift === "morning4")
-    {
-      return "4:30";
-    }
-    return "21:30";
+  const getInitialHour = () => {
+    return initialHours + ':00';
   }
 
   const getStartHour = (shift) => {
@@ -35,13 +29,14 @@ function App() {
   }
 
   const calculate = () => {
+    console.log(initialHours)
     const shift = document.getElementById("shifts").value;
     const hoursLeft = 40 - hours;
     /* The date use is not relevant what matter is the time */
-    const addHoursWithBreak = moment('2016-03-12 ' + getStartHour(shift)).add(hoursLeft+0.5, 'hours').format('LLL');
+    const addHoursWithBreak = moment('2016-03-12 ' + initialHours).add(hoursLeft+0.5, 'hours').format('LLL');
     const finishTimeWithBreak = addHoursWithBreak.split(' ');
 
-    const addHoursNoBreak = moment('2016-03-12 ' + getStartHour(shift)).add(hoursLeft, 'hours').format('LLL');
+    const addHoursNoBreak = moment('2016-03-12 ' + initialHours).add(hoursLeft, 'hours').format('LLL');
     const finishTimeNoBreak = addHoursNoBreak.split(' ');
 
     setFinalHours([finishTimeWithBreak[3] + ' ' + finishTimeWithBreak[4], finishTimeNoBreak[3] + ' ' + finishTimeNoBreak[4]]) 
@@ -61,14 +56,22 @@ function App() {
         </div>
         <div>
           <p>Shift: </p>
-          <select name="shifts" id="shifts">
+          <select name="shifts" id="shifts" onChange={(e) => {
+            setInitialHours(getStartHour(e.target.value))
+          }}>
             <option value="double-shift">9:30-cl</option>
             <option value="morning2">9:30-2:30</option>
             <option value="morning4">9:30-4:30</option>
-            <option value="midshift">11-30-9:30</option>
+            <option value="midshift">11:30-9:30</option>
             <option value="two-shift">2:30-cl</option>
             <option value="four-shift">4:30-cl</option>
           </select>
+        </div>
+        <div>
+          <p>Initial Hour: </p>
+          <input type='time'  value={initialHours} onChange={(e) => {
+            setInitialHours(e.target.value + ':00')
+          }} ></input>
         </div>
         
         <button className='main-button' onClick={calculate}>Calculate</button>
