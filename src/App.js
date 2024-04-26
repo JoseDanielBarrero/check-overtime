@@ -4,7 +4,7 @@ import './App.css'
 import moment from 'moment'
 
 function App() {
-  const [hours, setHours] = useState(0);
+  const [hours, setHours] = useState("");
   const [initialHours, setInitialHours] = useState('09:30');
   const [finalHours, setFinalHours] = useState(['', '']);
   
@@ -52,7 +52,13 @@ function App() {
             {
               setHours(e.target.value);
             }
-          }}></input>
+          }}
+          onKeyDownCapture={(e)=> {
+            if(e.keyCode === 13)
+            {
+                calculate();
+            }
+        }}></input>
         </div>
         <div>
           <p>Shift: </p>
