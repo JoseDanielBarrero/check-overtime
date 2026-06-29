@@ -21,6 +21,10 @@ function App() {
     {
       return "16:30:00";
     }
+    else if(shift === "mid10")
+    {
+      return "10:30:00";
+    }
     else if(shift === "midshift")
     {
       return "11:30:00";
@@ -68,6 +72,7 @@ function App() {
             <option value="double-shift">9:30-cl</option>
             <option value="morning2">9:30-2:30</option>
             <option value="morning4">9:30-4:30</option>
+            <option value="mid10">10:30-8:00</option>
             <option value="midshift">11:30-9:30</option>
             <option value="two-shift">2:30-cl</option>
             <option value="four-shift">4:30-cl</option>
