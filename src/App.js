@@ -65,7 +65,7 @@ function App() {
         }}></input>
         </div>
         <div>
-          <p>Shift: </p>
+          {/* <p>Shift: </p>
           <select name="shifts" id="shifts" onChange={(e) => {
             setInitialHours(getStartHour(e.target.value))
           }}>
@@ -76,7 +76,7 @@ function App() {
             <option value="midshift">11:30-9:30</option>
             <option value="two-shift">2:30-cl</option>
             <option value="four-shift">4:30-cl</option>
-          </select>
+          </select> */}
         </div>
         <div>
           <p>Initial Hour: </p>
@@ -89,8 +89,8 @@ function App() {
       </div>
       <div className='main-form'>
         <h2>Clock out at:</h2>
-        <p>With Break: {finalHours[0]}</p>
-        <p>Without Break: {finalHours[1]}</p>
+        {/* <p>With Break: {finalHours[0]}</p> */}
+        <p> {finalHours[1]}</p>
         
       </div>
     </div>
