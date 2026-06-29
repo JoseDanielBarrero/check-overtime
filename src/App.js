@@ -34,8 +34,8 @@ function App() {
 
   const calculate = () => {
     console.log(initialHours)
-    const shift = document.getElementById("shifts").value;
-    const hoursLeft = 40 - hours;
+/*     const shift = document.getElementById("shifts").value;
+ */    const hoursLeft = 40 - hours;
     /* The date use is not relevant what matter is the time */
     const addHoursWithBreak = moment('2016-03-12 ' + initialHours).add(hoursLeft+0.5, 'hours').format('LLL');
     const finishTimeWithBreak = addHoursWithBreak.split(' ');
